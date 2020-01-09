@@ -32,6 +32,27 @@ button {
 .mui--text-black-54{
   font-weight: bold;
 }
+.floating-btn{
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+.modal{
+  width: 300px;
+  height: 300px;
+  margin: 100px auto;
+  padding: 20px 30px;
+  overflow-y: auto;
+  background-color: #fff;
+  text-align: center;
+}
+.modal-content{
+
+}
+#auth-form label{
+  text-align: left;
+}
+
 
 @media (min-width: 768px) {
   #sidebar {
