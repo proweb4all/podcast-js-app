@@ -47,9 +47,14 @@ button {
   text-align: center;
 }
 .modal-content{
-
 }
 #auth-form label{
+  text-align: left;
+}
+.error{
+  color: red;
+}
+.ta-left{
   text-align: left;
 }
 

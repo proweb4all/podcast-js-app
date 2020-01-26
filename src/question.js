@@ -22,7 +22,7 @@ export class Question {
     return fetch(`https://podcast-js-app.firebaseio.com/questions.json?auth=${token}`)
       .then(response => response.json())
       .then(response => {
-        if (response.error) {
+        if (response && response.error) {
           return `<p class="error">${response.error}</p>`
         }
         return response ? Object.keys(response).map(key => ({
@@ -32,7 +32,6 @@ export class Question {
       })
   }
 
-
   static renderList() {
     const questions = getQuestionFromLocalStorage()
     const html = questions.length
@@ -40,6 +39,12 @@ export class Question {
       : `<div class='mui--text-headline'>Вы пока ничего не спрашивали</div>`
     const list = document.getElementById('list')
     list.innerHTML = html
+  }
+
+  static listToHTML(questions) {
+    return questions.length
+      ? `<ol>${questions.map(q => `<li class='ta-left'>${q.text}</li>`).join('')}</ol>`
+      : '<p>Вопросов пока нет</p>'
   }
 }
 function addToLocalStorage(question) {

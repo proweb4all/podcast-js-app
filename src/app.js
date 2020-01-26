@@ -8,7 +8,7 @@ const input = form.querySelector('#question-input')
 const button = form.querySelector('#submit')
 const modalBtn = document.getElementById('modal-btn')
 
-window.addEventListener('load', Question.renderList())
+window.addEventListener('load', Question.renderList)
 form.addEventListener('submit', onSubmitForm)
 modalBtn.addEventListener('click', openModal)
 input.addEventListener('input', () => button.disabled = !isValid(input.value)) 
@@ -46,9 +46,13 @@ function authFormHandler(event) {
   btn.disabled = true
   authWithEmailAndPassword(email, password)
     .then(Question.fetch)
-    .then(renderModalAfterAuth(content))
+    .then(renderModalAfterAuth)
     .then(() => btn.disabled = false)
 }
 function renderModalAfterAuth(content) {
-  console.log('Content', content)
+  if (typeof content === 'string') {
+    createModal('Ошибка!', content)
+  } else {
+    createModal('Список вопросов', Question.listToHTML(content))
+  }
 }
